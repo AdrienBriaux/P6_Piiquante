@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 
 const uniqueValidator = require('mongoose-unique-validator');
 
-// Création chéma utilisateur
+// Création schéma utilisateur
 
 const userSchema = mongoose.Schema({
     email: { type: String, required: true, unique: true },
