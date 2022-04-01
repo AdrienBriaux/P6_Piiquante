@@ -14,7 +14,7 @@ app.use((req, res, next) => {
 
 // Connection MongoDB
 
-mongoose.connect('mongodb+srv://Ibanez:Ibanez@cluster0.fpqz2.mongodb.net/sauces?retryWrites=true&w=majority',
+mongoose.connect('mongodb+srv://Ibanez:Ibanez@cluster0.fpqz2.mongodb.net/Piiquante?retryWrites=true&w=majority',
     {
         useNewUrlParser: true,
         useUnifiedTopology: true
