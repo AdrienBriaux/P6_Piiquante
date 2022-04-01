@@ -2,6 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const app = express();
 const userRoutes = require('./routes/user');
+const stuffRoutes = require('./routes/stuff');
 
 // CORS
 
@@ -28,9 +29,13 @@ app.use(express.json());
 
 //////////////// Enregistrement des routes ///////////////////
 
-// Route authentification sécurisé
+// Mise à disposition de la route authentification sécurisé
 
 app.use('/api/auth', userRoutes);
+
+// Mise à disposition des routes stuff
+
+app.use('/api/stuff', stuffRoutes);
 
 // test server
 
