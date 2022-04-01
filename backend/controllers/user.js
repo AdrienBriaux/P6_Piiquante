@@ -1,4 +1,5 @@
 const bcrypt = require('bcrypt');
+const webToken = require('jsonwebtoken');
 const User = require('../models/User');
 
 // Controller création d'utilisateur

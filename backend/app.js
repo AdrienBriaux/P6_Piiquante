@@ -1,6 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const app = express();
+const userRoutes = require('./routes/user');
 
 // CORS
 
@@ -25,10 +26,17 @@ mongoose.connect('mongodb+srv://Ibanez:Ibanez@cluster0.fpqz2.mongodb.net/sauces?
 
 app.use(express.json());
 
+//////////////// Enregistrement des routes ///////////////////
+
+// Route authentification sécurisé
+
+app.use('/api/auth', userRoutes);
+
 // test server
 
 app.use((req, res, next) => {
     console.log('requête reçue !');
 })
 
+// Mise à disposition de app.js
 module.exports = app;
