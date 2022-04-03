@@ -1,7 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const app = express();
-const Sauce = require('./models/sauce');
+const path = require('path');
 const userRoutes = require('./routes/user');
 const stuffRoutes = require('./routes/stuff');
 
@@ -38,9 +38,14 @@ app.use('/api/auth', userRoutes);
 
 app.use('/api/stuff', stuffRoutes);
 
+
 // Mise à disposition du contenu images
 
 app.use('/images', express.static(path.join(__dirname, 'images')));
+
+// Mise à disposition du post
+
+app.post
 
 // test server
 

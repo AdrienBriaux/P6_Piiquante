@@ -17,7 +17,7 @@ exports.createThing = (req, res, next) => {
 
     sauce.save()
 
-        .then(() => res.status(201).json({ message: 'Objet enregistré !' }))
+        .then(() => res.status(201).json({ message: 'Sauce enregistré !' }))
         .catch(error => res.status(400).json({ error }));
 };
 
@@ -41,7 +41,7 @@ exports.deleteThing = (req, res, next) => {
 
                 Sauce.deleteOne({ _id: req.params.id })
 
-                    .then(() => res.status(200).json({ message: 'Objet supprimé !' }))
+                    .then(() => res.status(200).json({ message: 'Sauce supprimé !' }))
                     .catch(error => res.status(400).json({ error }));
             });
         })
