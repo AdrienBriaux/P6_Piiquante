@@ -38,6 +38,10 @@ app.use('/api/auth', userRoutes);
 
 app.use('/api/stuff', stuffRoutes);
 
+// Mise à disposition du contenu images
+
+app.use('/images', express.static(path.join(__dirname, 'images')));
+
 // test server
 
 app.use((req, res) => {
