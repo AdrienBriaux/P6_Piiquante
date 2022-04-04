@@ -21,6 +21,8 @@ exports.createThing = (req, res, next) => {
         .catch(error => res.status(400).json({ error }));
 };
 
+// Controleur prendre toutes les sauces
+
 exports.getAllThings = (req, res, next) => {
 
     Sauce.find()
@@ -28,6 +30,9 @@ exports.getAllThings = (req, res, next) => {
         .then(sauces => res.status(200).json(sauces))
         .catch(error => res.status(400).json({ error }));
 };
+
+
+// Controleur supprimer sauce
 
 exports.deleteThing = (req, res, next) => {
 

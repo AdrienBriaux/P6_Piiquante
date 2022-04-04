@@ -36,16 +36,12 @@ app.use('/api/auth', userRoutes);
 
 // Mise à disposition des routes stuff
 
-app.use('/api/stuff', stuffRoutes);
+app.use('/api/sauces', stuffRoutes);
 
 
 // Mise à disposition du contenu images
 
 app.use('/images', express.static(path.join(__dirname, 'images')));
-
-// Mise à disposition du post
-
-app.post
 
 // test server
 
