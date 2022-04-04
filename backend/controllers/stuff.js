@@ -43,7 +43,7 @@ exports.getAllThings = (req, res, next) => {
 };
 
 
-// Controleur supprimer sauce
+// Controleur supprimer la sauce
 
 exports.deleteThing = (req, res, next) => {
 

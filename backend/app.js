@@ -28,7 +28,7 @@ mongoose.connect('mongodb+srv://Ibanez:Ibanez@cluster0.fpqz2.mongodb.net/Piiquan
 
 app.use(express.json());
 
-//////////////// Enregistrement des routes ///////////////////
+//////////////// Enregistrement des chemins de requête ///////////////////
 
 // Mise à disposition de la route authentification sécurisé
 
