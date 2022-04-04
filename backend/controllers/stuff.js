@@ -12,12 +12,23 @@ exports.createThing = (req, res, next) => {
     const sauce = new Sauce({
 
         ...sauceObject,
-        imageUrl: `${req.protocol}://${req.get('host')}/images/${req.file.filename}`
+        imageUrl: `http://localhost:3000/images/${req.file.filename}`
     });
 
     sauce.save()
 
         .then(() => res.status(201).json({ message: 'Sauce enregistré !' }))
+        .catch(error => res.status(400).json({ error }));
+};
+
+
+// Controleur pour prendre une sauce 
+
+exports.getOneThing = (req, res, next) => {
+
+    Sauce.findOne()
+    
+        .then(sauce => res.status(200).json(sauce))
         .catch(error => res.status(400).json({ error }));
 };
 

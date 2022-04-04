@@ -12,6 +12,10 @@ router.post('/', auth, multer, stuffCtrl.createThing);
 
 router.delete('/:id', auth, stuffCtrl.deleteThing);
 
+// Route pour visualiser une seul sauce
+
+router.get('/:id', auth, stuffCtrl.getOneThing);
+
 // Route pour récupérer toutes les sauces
 
 router.get('/', auth, stuffCtrl.getAllThings);
