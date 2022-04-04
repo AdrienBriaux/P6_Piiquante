@@ -8,6 +8,10 @@ const multer = require('../middleware/multer-config');
 
 router.post('/', auth, multer, stuffCtrl.createThing);
 
+// Route pour modifier une sauce
+
+router.put('/:id', auth, multer, stuffCtrl.modifyThing);
+
 // Route pour supprimer une sauce
 
 router.delete('/:id', auth, stuffCtrl.deleteThing);
