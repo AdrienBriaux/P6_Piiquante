@@ -1,4 +1,3 @@
-
 const Sauce = require('../models/Sauce');
 const fs = require('fs');
 
@@ -12,7 +11,11 @@ exports.createThing = (req, res, next) => {
     const sauce = new Sauce({
 
         ...sauceObject,
-        imageUrl: `${req.protocol}://${req.get('host')}/images/${req.file.filename}`
+        imageUrl: `${req.protocol}://${req.get('host')}/images/${req.file.filename}`,
+        likes: 0,
+        dislikes: 0,
+        usersLiked: [],
+        usersDisliked: []
     });
 
     sauce.save()
@@ -83,3 +86,20 @@ exports.deleteThing = (req, res, next) => {
         .catch(error => res.status(500).json({ error }));
 };
 
+// Controlleur pour liker/disliker une sauce
+
+exports.likeThing = (req, res, next) => {
+
+    let like = req.body.likes;
+    let userId = req.body.userId;
+    let sauceId = req.params._id;
+
+    if (like === 1) {
+
+        Sauce.updateOne(
+
+            
+        );
+
+    }
+}

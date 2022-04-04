@@ -8,6 +8,10 @@ const multer = require('../middleware/multer-config');
 
 router.post('/', auth, multer, stuffCtrl.createThing);
 
+// Route pour les likes/dislakes
+
+router.post('/:id/like', auth, stuffCtrl.likeThing);
+
 // Route pour modifier une sauce
 
 router.put('/:id', auth, multer, stuffCtrl.modifyThing);
