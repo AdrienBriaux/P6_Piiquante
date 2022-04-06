@@ -29,7 +29,7 @@ exports.createThing = (req, res, next) => {
 
 exports.getOneThing = (req, res, next) => {
 
-    Sauce.findOne()
+    Sauce.findOne({ _id: req.params.id })
 
         .then(sauce => res.status(200).json(sauce))
         .catch(error => res.status(400).json({ error }));
@@ -88,7 +88,8 @@ exports.deleteThing = (req, res, next) => {
         .catch(error => res.status(500).json({ error }));
 };
 
-// Controlleur pour liker/disliker une sauce
+// Controlleur pour liker/disliker/annuler un like 
+
 
 exports.likeThing = (req, res, next) => {
 
@@ -98,10 +99,14 @@ exports.likeThing = (req, res, next) => {
 
     if (like === 1) {
 
-        Sauce.updateOne(
+        Sauce.updateOne(sauceId, req.body.sauce)
 
+            .then(() =>
 
-        );
+                $inc = { like: + 1 }, $push = { usersLiked: userId }
+            )
 
-    }
-}
+            .then(() => res.status(200).json({ message: 'Like ajouté !' }))
+            .catch(error => res.status(400).json({ error }))
+    };
+};
