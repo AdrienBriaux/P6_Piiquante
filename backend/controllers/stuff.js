@@ -35,7 +35,7 @@ exports.getOneThing = (req, res, next) => {
         .catch(error => res.status(400).json({ error }));
 };
 
-// Controlleur pour modifier une sauce
+// Controleur pour modifier une sauce
 
 exports.modifyThing = (req, res, next) => {
 
@@ -133,6 +133,8 @@ exports.likeThing = (req, res, next) => {
 
             .then(sauce => {
 
+                // Si l'utilisateur avait like cette sauce
+
                 if (sauce.usersLiked.includes(req.body.userId)) {
 
                     Sauce.updateOne({ _id: req.params.id },
@@ -145,6 +147,8 @@ exports.likeThing = (req, res, next) => {
                         .then(() => res.status(200).json({ message: 'Like annulé' }))
                         .catch(error => res.status(400).json({ error }))
                 }
+
+                // Si l'utilisateur avait dislike cette sauce
 
                 if (sauce.usersDisliked.includes(req.body.userId)) {
 
