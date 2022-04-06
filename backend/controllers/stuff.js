@@ -93,20 +93,44 @@ exports.deleteThing = (req, res, next) => {
 
 exports.likeThing = (req, res, next) => {
 
-    let like = req.body.likes;
-    let userId = req.body.userId;
-    let sauceId = req.params._id;
+    if (req.body.like === 1) {
 
-    if (like === 1) {
+        Sauce.updateOne({ _id: req.params.id },
 
-        Sauce.updateOne(sauceId, req.body.sauce)
-
-            .then(() =>
-
-                $inc = { like: + 1 }, $push = { usersLiked: userId }
-            )
+            { $inc: { likes: +1 } },
+            { $push: { usersLiked: req.body.userId } })
 
             .then(() => res.status(200).json({ message: 'Like ajouté !' }))
             .catch(error => res.status(400).json({ error }))
     };
+
+    if (req.body.like === -1) {
+
+        Sauce.updateOne({ _id: req.params.id },
+
+            { $inc: { dislikes: +1 } },
+            { $push: { usersLiked: req.body.userId } })
+
+            .then(() => res.status(200).json({ message: 'Dislike ajouté !' }))
+            .catch(error => res.status(400).json({ error }))
+    };
+
+    /* if (req.body.like === 0) {
+ 
+         Sauce.updateOne({ _id: req.params.id },
+ 
+             { $set: { dislikes: 0 } },
+             { $set: { likes: 0 } },
+             {
+                 $pull: {
+                     usersLiked: req.body.userId,
+                     usersDisliked: req.body.userId
+                 }
+             })
+ 
+             .then(() => res.status(200).json({ message: 'Vote annulé' }))
+             .catch(error => res.status(400).json({ error }))
+     };
+ 
+     */
 };
