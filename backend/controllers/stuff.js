@@ -133,7 +133,7 @@ exports.likeThing = (req, res, next) => {
 
             .then(sauce => {
 
-                if (sauce.usersLiked = req.body.userId) {
+                if (sauce.usersLiked.userId = req.body.userId) {
 
                     Sauce.updateOne({ _id: req.params.id },
 
@@ -145,7 +145,19 @@ exports.likeThing = (req, res, next) => {
                         .then(() => res.status(200).json({ message: 'Like annulé' }))
                         .catch(error => res.status(400).json({ error }))
                 }
-                return;
+
+                if (sauce.usersDisliked.userId = req.body.userId) {
+
+                    Sauce.updateOne({ _id: req.params.id },
+
+                        {
+                            $inc: { dislikes: -1 },
+                            $pull: { usersDisliked: req.body.userId }
+                        })
+
+                        .then(() => res.status(200).json({ message: 'Dislike annulé' }))
+                        .catch(error => res.status(400).json({ error }))
+                }
             });
 
     }
