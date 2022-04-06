@@ -72,8 +72,10 @@ exports.deleteThing = (req, res, next) => {
 
         .then(sauce => {
 
-            const filename = sauce.imageUrl.split('/images/')[1];
+            // Si la sauce appartient à l'utilisateur
 
+            const filename = sauce.imageUrl.split('/images/')[1];
+            console.log(filename);
             fs.unlink(`images/${filename}`, () => {
 
                 Sauce.deleteOne({ _id: req.params.id })
@@ -98,7 +100,7 @@ exports.likeThing = (req, res, next) => {
 
         Sauce.updateOne(
 
-            
+
         );
 
     }
