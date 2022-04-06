@@ -8,7 +8,7 @@ const multer = require('../middleware/multer-config');
 
 router.post('/', auth, multer, stuffCtrl.createThing);
 
-// Route pour les likes/dislakes
+// Route pour envoyer les likes/dislikes/annuler
 
 router.post('/:id/like', auth, stuffCtrl.likeThing);
 
@@ -20,7 +20,7 @@ router.put('/:id', auth, multer, stuffCtrl.modifyThing);
 
 router.delete('/:id', auth, stuffCtrl.deleteThing);
 
-// Route pour visualiser une seul sauce
+// Route pour prendre une seul sauce
 
 router.get('/:id', auth, stuffCtrl.getOneThing);
 

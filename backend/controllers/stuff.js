@@ -133,7 +133,7 @@ exports.likeThing = (req, res, next) => {
 
             .then(sauce => {
 
-                if (sauce.usersLiked.userId = req.body.userId) {
+                if (sauce.usersLiked.includes(req.body.userId)) {
 
                     Sauce.updateOne({ _id: req.params.id },
 
@@ -146,7 +146,7 @@ exports.likeThing = (req, res, next) => {
                         .catch(error => res.status(400).json({ error }))
                 }
 
-                if (sauce.usersDisliked.userId = req.body.userId) {
+                if (sauce.usersDisliked.includes(req.body.userId)) {
 
                     Sauce.updateOne({ _id: req.params.id },
 
