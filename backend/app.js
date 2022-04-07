@@ -9,6 +9,7 @@ const stuffRoutes = require('./routes/stuff');
 // Protection contre les failles XSS pour express
 
 app.use(helmet.xssFilter());
+app.use(helmet.frameguard({ action: 'deny' }));
 
 // CORS
 
