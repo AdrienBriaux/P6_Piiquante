@@ -1,5 +1,8 @@
 const express = require('express');
-const helmet = require('helmet')
+const helmet = require('helmet');
+var cors = require('cors');
+
+
 const mongoose = require('mongoose');
 const app = express();
 const path = require('path');
@@ -7,10 +10,12 @@ const userRoutes = require('./routes/user');
 const stuffRoutes = require('./routes/stuff');
 
 // Protection contre les failles XSS pour express
-
 app.use(helmet.xssFilter());
 app.use(helmet.frameguard({ action: 'deny' }));
+app.use(helmet.noSniff());
 
+// Gestion des requêtes acec CORS
+app.use(cors());
 // CORS
 
 app.use((req, res, next) => {
