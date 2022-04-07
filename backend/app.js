@@ -1,9 +1,14 @@
 const express = require('express');
+const helmet = require('helmet')
 const mongoose = require('mongoose');
 const app = express();
 const path = require('path');
 const userRoutes = require('./routes/user');
 const stuffRoutes = require('./routes/stuff');
+
+// Protection contre les failles XSS pour express
+
+app.use(helmet.xssFilter());
 
 // CORS
 
