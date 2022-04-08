@@ -32,7 +32,7 @@ app.use(express.json());
 
 //////////////// Enregistrement des chemins de requête ///////////////////
 
-// Mise à disposition de la route authentification sécurisé
+// Mise à disposition de la route authentification
 
 app.use('/api/auth', userRoutes);
 
