@@ -13,17 +13,8 @@ app.use(helmet.xssFilter());
 app.use(helmet.frameguard({ action: 'deny' }));
 // Sécurité anti clickjacking
 app.use(helmet.noSniff());
-// Gestion des requêtes acec CORS
+// Gestion des requêtes avec CORS
 app.use(cors());
-
-// CORS
-
-app.use((req, res, next) => {
-    res.setHeader('Access-Control-Allow-Origin', '*');
-    res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content, Accept, Content-Type, Authorization, Content-Security-Policy');
-    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, PATCH, OPTIONS');
-    next();
-});
 
 // Connection MongoDB
 
