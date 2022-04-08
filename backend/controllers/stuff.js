@@ -39,18 +39,29 @@ exports.getOneThing = (req, res, next) => {
 
 exports.modifyThing = (req, res, next) => {
 
-    const sauceObject = req.file ? {
+    Sauce.findOne({ _id: req.params.id })
 
-        ...JSON.parse(req.body.sauce),
-        imageUrl: `${req.protocol}://${req.get('host')}/images/${req.file.filename}`
-    }
+        .then(sauce => {
 
-        : { ...req.body };
+            if (sauce.userId !== req.auth.userId) {
 
-    Sauce.updateOne({ _id: req.params.id }, { ...sauceObject, _id: req.params.id })
+                return res.status(403).json({ error: new Error('403: unauthorized request') })
+            }
 
-        .then(() => res.status(200).json({ message: 'Sauce modifié !' }))
-        .catch(error => res.status(400).json({ error }));
+
+            const sauceObject = req.file ? {
+
+                ...JSON.parse(req.body.sauce),
+                imageUrl: `${req.protocol}://${req.get('host')}/images/${req.file.filename}`
+            }
+
+                : { ...req.body };
+
+            Sauce.updateOne({ _id: req.params.id }, { ...sauceObject, _id: req.params.id })
+
+                .then(() => res.status(200).json({ message: 'Sauce modifié !' }))
+                .catch(error => res.status(400).json({ error }));
+        });
 }
 
 // Controleur prendre toutes les sauces
