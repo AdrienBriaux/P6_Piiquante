@@ -1,7 +1,7 @@
 const express = require('express');
 const helmet = require('helmet');
 var cors = require('cors');
-
+var express_enforces_ssl = require('express-enforces-ssl');
 
 const mongoose = require('mongoose');
 const app = express();
@@ -9,18 +9,23 @@ const path = require('path');
 const userRoutes = require('./routes/user');
 const stuffRoutes = require('./routes/stuff');
 
+// Envoi en HTTPS
+app.use(express_enforces_ssl());
+
 // Protection contre les failles XSS pour express
 app.use(helmet.xssFilter());
 app.use(helmet.frameguard({ action: 'deny' }));
+// Sécurité anti clickjacking
 app.use(helmet.noSniff());
 
 // Gestion des requêtes acec CORS
 app.use(cors());
+
 // CORS
 
 app.use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Origin', '*');
-    res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content, Accept, Content-Type, Authorization');
+    res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content, Accept, Content-Type, Authorization, expect-ct, X-Frame-Options: DENY');
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, PATCH, OPTIONS');
     next();
 });

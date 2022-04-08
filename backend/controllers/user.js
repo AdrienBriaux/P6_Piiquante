@@ -2,7 +2,7 @@ const bcrypt = require('bcrypt');
 const webToken = require('jsonwebtoken');
 const User = require('../models/User');
 
-// Controlleur création d'utilisateur
+// Controleur création d'utilisateur
 
 exports.signup = (req, res, next) => {
 
@@ -25,7 +25,7 @@ exports.signup = (req, res, next) => {
         .catch(error => res.status(500).json({ error }));
 };
 
-// Controlleur connection utilisateur
+// Controleur connection utilisateur
 
 exports.login = (req, res, next) => {
 
