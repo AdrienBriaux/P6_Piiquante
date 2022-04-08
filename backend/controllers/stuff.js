@@ -72,16 +72,17 @@ exports.deleteThing = (req, res, next) => {
 
         .then(sauce => {
 
+            if (!sauce) {
+
+                return res.status(404).json({ error: new Error('Sauce non trouvé') })
+            }
             // Si la sauce n'appartient pas à l'utilisateur
 
             if (sauce.userId !== req.auth.userId) {
 
-                res.status(403).json({
+                return res.status(403).json({ error: new Error('403: unauthorized request') })
+            }
 
-                    error: new Error('403: unauthorized request')
-                });
-            };
-            
             const filename = sauce.imageUrl.split('/images/')[1];
 
             fs.unlink(`images/${filename}`, () => {
