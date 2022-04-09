@@ -52,7 +52,7 @@ exports.login = (req, res, next) => {
                         userId: user._id,
                         token: webToken.sign({ userId: user._id },
                             'TheSkyIsBlueAndItsBetterLikeThat!',
-                            { expiresIn: '5m' })
+                            { expiresIn: '2h' })
                     });
                 })
 
