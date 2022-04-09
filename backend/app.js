@@ -1,6 +1,6 @@
 const express = require('express');
 const helmet = require('helmet');
-var cors = require('cors');
+
 const mongoose = require('mongoose');
 const app = express();
 const path = require('path');
