@@ -3,7 +3,7 @@ const fs = require('fs');
 
 // Controleur de création d'une sauce
 
-exports.createThing = (req, res, next) => {
+exports.createSauce = (req, res, next) => {
 
     const sauceObject = JSON.parse(req.body.sauce);
     delete sauceObject._id;
@@ -27,7 +27,7 @@ exports.createThing = (req, res, next) => {
 
 // Controleur pour prendre une sauce 
 
-exports.getOneThing = (req, res, next) => {
+exports.getOneSauce = (req, res, next) => {
 
     Sauce.findOne({ _id: req.params.id })
 
@@ -37,7 +37,7 @@ exports.getOneThing = (req, res, next) => {
 
 // Controleur pour modifier une sauce
 
-exports.modifyThing = (req, res, next) => {
+exports.modifySauce = (req, res, next) => {
 
     Sauce.findOne({ _id: req.params.id })
 
@@ -66,7 +66,7 @@ exports.modifyThing = (req, res, next) => {
 
 // Controleur prendre toutes les sauces
 
-exports.getAllThings = (req, res, next) => {
+exports.getAllSauces = (req, res, next) => {
 
     Sauce.find()
 
@@ -77,7 +77,7 @@ exports.getAllThings = (req, res, next) => {
 
 // Controleur supprimer la sauce
 
-exports.deleteThing = (req, res, next) => {
+exports.deleteSauce = (req, res, next) => {
 
     Sauce.findOne({ _id: req.params.id })
 
@@ -112,7 +112,7 @@ exports.deleteThing = (req, res, next) => {
 /////////// Controlleur pour liker/disliker/annuler un like /////////////
 
 
-exports.likeThing = (req, res, next) => {
+exports.likeSauce = (req, res, next) => {
     console.log(req.body)
 
     // Pour un like
