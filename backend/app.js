@@ -26,7 +26,7 @@ app.use((req, res, next) => {
 
 // Connection MongoDB
 
-mongoose.connect('mongodb+srv://Ibanez:Ibanez@cluster0.fpqz2.mongodb.net/Piiquante?retryWrites=true&w=majority',
+mongoose.connect('mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@${process.env.DB_CLUSTER}.mongodb.net/${process.env.DB_NAME}?retryWrites=true&w=majority',
     {
         useNewUrlParser: true,
         useUnifiedTopology: true
