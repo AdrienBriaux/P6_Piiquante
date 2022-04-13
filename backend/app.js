@@ -5,7 +5,7 @@ const mongoose = require('mongoose');
 const app = express();
 const path = require('path');
 const userRoutes = require('./routes/user');
-const stuffRoutes = require('./routes/stuff');
+const sauceRoutes = require('./routes/sauce');
 
 // Protection contre les failles XSS pour express
 app.use(helmet.xssFilter());
@@ -44,9 +44,9 @@ app.use(express.json());
 
 app.use('/api/auth', userRoutes);
 
-// Mise à disposition des routes stuff
+// Mise à disposition des routes sauce
 
-app.use('/api/sauces', stuffRoutes);
+app.use('/api/sauces', sauceRoutes);
 
 
 // Mise à disposition du contenu images

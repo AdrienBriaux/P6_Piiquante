@@ -13,6 +13,6 @@ const userSchema = mongoose.Schema({
 
 userSchema.plugin(uniqueValidator);
 
-// Mise à disposition du model User 
+// Mise à disposition du model User
 
 module.exports = mongoose.model('User', userSchema);
