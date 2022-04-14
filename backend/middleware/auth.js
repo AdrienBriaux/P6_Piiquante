@@ -4,7 +4,7 @@ module.exports = (req, res, next) => {
 
     try {
         const token = req.headers.authorization.split(' ')[1];
-        const decodedToken = webToken.verify(token, 'TheSkyIsBlueAndItsBetterLikeThat!');
+        const decodedToken = webToken.verify(token, process.env.SecretKey);
         const userId = decodedToken.userId;
         req.auth = { userId };
 
