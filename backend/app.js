@@ -8,6 +8,7 @@ const path = require('path');
 const userRoutes = require('./routes/user');
 const sauceRoutes = require('./routes/sauce');
 
+app.use(helmet());
 // Protection contre les failles XSS pour express
 app.use(helmet.xssFilter());
 // Protection X-Frame-Options contre l'insertion de la page dans une frame
@@ -23,6 +24,7 @@ app.use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content, Accept, Content-Type, Authorization ');
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, PATCH, OPTIONS');
     res.setHeader('Content-Security-Policy', "default-src 'self'");
+    res.setHeader('Cross-Origin-Resource-Policy', "cross-origin")
     next();
 });
 
@@ -42,11 +44,11 @@ app.use(express.json());
 
 //////////////// Enregistrement des chemins de requête ///////////////////
 
-// Mise à disposition de la route authentification
+// Mise à disposition des routes user
 
 app.use('/api/auth', userRoutes);
 
-// Mise à disposition des routes sauce
+// Mise à disposition des routes sauces
 
 app.use('/api/sauces', sauceRoutes);
 

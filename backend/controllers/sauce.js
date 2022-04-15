@@ -43,6 +43,8 @@ exports.modifySauce = (req, res, next) => {
 
         .then(sauce => {
 
+            //Si la sauce n'appartient pas à l'utilisateur il ne peut pas la modifier
+
             if (sauce.userId !== req.auth.userId) {
 
                 return res.status(403).json({ error: new Error('403: unauthorized request') })
@@ -87,7 +89,8 @@ exports.deleteSauce = (req, res, next) => {
 
                 return res.status(404).json({ error: new Error('Sauce non trouvé') })
             }
-            // Si la sauce n'appartient pas à l'utilisateur
+
+            // Si la sauce n'appartient pas à l'utilisateur il ne sera pas autorisé à supprimer la sauce
 
             if (sauce.userId !== req.auth.userId) {
 
