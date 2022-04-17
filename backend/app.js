@@ -9,6 +9,7 @@ const path = require('path');
 const userRoutes = require('./routes/user');
 const sauceRoutes = require('./routes/sauce');
 
+// Collection de middleware pour la sécurité
 app.use(helmet());
 // Protection contre les failles XSS pour express
 app.use(helmet.xssFilter());

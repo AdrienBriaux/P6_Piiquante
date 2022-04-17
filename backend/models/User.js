@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-// Controle de l'existence unique de l'adresse mail dans la dataBase
+// Contrôle de l'existence unique de l'adresse mail dans la base de données
 
 const uniqueValidator = require('mongoose-unique-validator');
 
